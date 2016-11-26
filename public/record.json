@@ -1,0 +1,19 @@
+{
+   "users": [
+
+       {
+          "fname" : "Bernard",
+          "lname" : "Aguilar",
+          "nname" : "Gales",
+          "password" : "12345678"
+       },
+       {
+          "fname" : "qwerty",
+          "lname" : "weee",
+          "nname" : "d",
+          "password" : "admin"
+       }
+        
+  
+   ]
+}

@@ -1,0 +1,55 @@
+<div id="login">  
+<center>
+  ID number:<br>
+  <input type="text" id="idn" placeholder="Enter ID number" >
+  <br>
+  Password:<br>
+  <input id="Passwd" name="Passwd" type="password" placeholder="Enter Password" class="" id="Passwd">
+  <br><br>
+  <button class="button" onclick="log(idn,Passwd)">Log-in</button>
+  <button class="button" button id="hide">Register</button>
+</center>
+</div>
+
+<center>
+<div id="register">
+      <table border=0>
+            <tr>
+               <th>
+                  First name:<br>
+                  <input type="text" id="fname" placeholder="Enter first name">
+                  <br>
+                  Last name:<br>
+                  <input type="text" id="lname" placeholder="Enter Last name">
+                  <br>
+                  Middle name:<br>
+                  <input type="text" id="mname" placeholder="Enter Middle name">
+                  <br>
+               </th>
+               <th>
+                    Password:<br>
+                    <input id="Passwd" id="Passwd" type="password" placeholder="Password" class="" >
+                    <br>
+                    Comform Password:<br>
+                    <input id="Passwd" id="CPasswd" type="password" placeholder="Conform password" class="" >
+                    <br>
+               </th>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <button class="button" onclick="regis(fname,lname,mname,Passwd)" button id="show">Submit</button>
+              </th>
+            </tr>
+      </table>
+  </div>
+</center>
+
+<!–
+     -division for dashboard
+–>
+<center>
+<div id="record">
+  <p id="wee"></p>
+<button class="button" button id="Back">Back to Log-in</button>
+</div>
+</center>

@@ -1,0 +1,7 @@
+Create an application from scratch.
+ ☐ Local  and remote repo  Set-up.
+ ☐ Log-in to your githud and create repo login-App.hbs.
+ ☐ Click Create Note:  Take the  default  setting  such as do not create README.md because we will create it locally.
+ ☐ They you have now an empty remote repo.
+ ☐ While on your local, create a directory loginApp.hbs then also  creaete a README.md and put any text inside.
+ ☐ Launch terminal then execute the following commands.

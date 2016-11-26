@@ -1,0 +1,129 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="handlebars/dist/handlebars.min.js"></script>
+<script src="handlebars-intl/dist/handlebars-intl.min.js"></script>
+<script src="/libs/handlebars.runtime.js"></script>
+<script> //Jquiry
+$(document).ready(function(){
+    $("#register").hide();
+    $("#record").hide();
+    $("#login").show();
+    $("#hide").click(function(){
+        $("#login").hide();
+        $("#record").hide();
+        $("#register").show();
+    });//end of hide function
+    $("#show").click(function(){
+        $("#login").show();
+        $("#register").hide();
+        $("#record").hide();
+    });//end of show dashboard form
+    $("#Back").click(function(){
+         $("#register").hide();
+         $("#record").hide();
+         $("#login").show();
+    });//end of dachboard
+   });
+</script>
+<script>//javascript
+var items = []
+var wee;
+var defultuser="admin";
+var defultpass="admin";
+function log(idn,Passwd){
+  var counter = 0;
+  var idnumber = document.getElementById("idn").value;
+  var passs = document.getElementById("Passwd").value;
+  if(idnumber==defultuser && passs==defultpass){
+    result();
+  }
+  else{
+    $.getJSON('record.json',function(record){
+      var odj = jQuery.parseJSON(JSON.stringify(record));
+
+      for(var x = 0; x < odj.users.length; x++){
+        if (idnumber == obj.users[x].fname && passs == obj.users[x].password) {
+        alert("You are successfully login :D");
+        counter++;
+      }
+    }
+  });
+
+  if (counter == 0) {
+    alert("Error Incorrect Email/Password");
+   }
+  counter = 0;
+  }
+  
+}//end login
+function regis(fname,lname,mname,Passwd){
+   $fn = $("#fname").val();
+   $ln = $("#lname").val();
+   $mn = $("#mname").val();
+   $pswrd = $("#Passwd").val();
+
+   var arr = { "fname": $("#fname").val(), "lname": $("#lname").val(), "nname": $("#mname").val(), "password": $("#password").val()};
+$.ajax({
+    url: 'http://localhost:3000/record',
+    type: 'POST',
+    data: JSON.stringify(arr),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+   
+    success: function(msg) {
+     
+    }
+});
+
+   window.location='/dashboard';
+}
+function result(){
+  var arr_len = items.length;
+  for(var x=0; x<arr_len; x++){
+            var fn = items[x]['fname'];
+            var ln = items[x]['lname'];
+            var mn = items[x]['mname'];
+            var pw = items[x]['pass'];
+            
+            //append to results div to display
+            $("#wee").append("firstname: " + fn + "    lastname: " + ln + "   Middlename " + mn + "<br />");
+        }
+}
+function log(){
+  window.location='/';
+}
+</script>
+<style>
+.button {
+  padding: 10px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(10px);
+}
+.div
+{
+
+}
+</style>
+<body>
+
+{{{body}}}
+
+</body>
+</head>
+</html>
