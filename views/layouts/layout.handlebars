@@ -58,14 +58,16 @@ function log(idn,Passwd){
   
 }//end login
 function regis(fname,lname,mname,Passwd){
-   $fn = $("#fname").val();
-   $ln = $("#lname").val();
-   $mn = $("#mname").val();
-   $pswrd = $("#Passwd").val();
 
-   var arr = { "fname": $("#fname").val(), "lname": $("#lname").val(), "nname": $("#mname").val(), "password": $("#password").val()};
+   var arr = { 
+      "fname": $("#fname").val(), 
+      "lname": $("#lname").val(), 
+      "nname": $("#mname").val(), 
+      "password": $("#password").val()
+    };
+
 $.ajax({
-    url: 'http://localhost:3000/record',
+    url: '/dashboard',
     type: 'POST',
     data: JSON.stringify(arr),
     contentType: 'application/json; charset=utf-8',

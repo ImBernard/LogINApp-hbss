@@ -1,14 +1,15 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var mysql   = require('mysql');
+var bodyParser = require('body-parser');
 var app = express();	
 var db;
 var obj;
 var usid;
 
- 
 
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.engine('handlebars', exphbs({defaultLayout: 'layout'})); //handlebars
 app.set('view engine', 'handlebars');
@@ -17,65 +18,51 @@ app.get('/', function (req, res) {//log in
     res.render('index');
 });
  
-app.get('/dashboard',function(req,res){
+app.get('/db',function(req,res) {
+	res.send(JSON.stringify(db));
+});
+app.get('/dashboard',function(req,res){//dashboard
     res.render('dashboard');
 });
-app.post('/dashboard',function(req,res){
+app.post('/dashboard',function(req,res){//process inside the registration
 	console.log(req.body);
-
+ 	
 	var fname=req.body.fname;
 	var lname=req.body.lname;
-	var Mname=req.body.mname;
-	var pass=req.body.Passwd;
+	var m1name=req.body.nname;
+	var pass=req.body.password;
 	var cp=req.body.Cpasswd;
 	var reg={
-		fname:fname,
-		lname:lname,
-		Mname:mname,
-		password:pass
+		fname : fname,
+		lname : lname,
+		Mname : m1name,
+		password : pass
 	}//end
-    if(cp==pass && pass.length>=10){
+    if(cp == pass ){
 		var connection = mysql.createConnection({
   			host:'localhost',
   			user: 'root',
-  			password: 'admin',
+  			password: '',
   			database:'login'
 	});
 				connection.connect();
 
-		var query = connection.query('insert into tbluser set ?', reg , function (err, result){
+		var query = connection.query('INSERT INTO tbluser set ?', reg , function (err, result){
 		if(err){
   			console.error(err);
   			return;
 			}
 			console.error(result);
 		});	
-	var con=mysql.createConnection({
-			host:'localhost',
-  			user: 'root',
-  			password: 'admin',
-  			database:'login'
-	});
-	con.connect();
-	connection.query("SELECT * FROM tbluser", function(err, rows, fields) {
-  			if (!!err){
-   				 console.log(err);
- 			 }
- 		    else
- 			 {
-			db = rows
-			usid = rows.length;
-  			}
-  	});
+		connection.end();//close database
   	res.render('')
-
     }//end if ef
        else
    {
 
 	res.render('error')
     console.log("err");
-   }
+   }//end else
 
-});//end of dash
+});//end of dashboard
 app.listen(5000);
