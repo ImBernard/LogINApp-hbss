@@ -1,17 +1,17 @@
-  {
+{
    "users": [
 
        {
-          "fname" : "Bernard",
-          "lname" : "Aguilar",
-          "nname" : "Gales",
-          "password" : "12345678"
+      "UsernName" : "Bernard27", 
+      "EmailAddress" : "bernardaguialr27@gmail.com", 
+      "Name" : "Bernard Aguilar", 
+      "Password" : "themaster"
        },
        {
-          "fname" : "qwerty",
-          "lname" : "weee",
-          "nname" : "d",
-          "password" : "admin"
+      "UsernName" : "qwerty", 
+      "EmailAddress" : "qwerty", 
+      "Name" : "asdfg", 
+      "Password" : "111"
        }
         
   
